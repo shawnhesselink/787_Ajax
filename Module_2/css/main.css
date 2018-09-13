@@ -23,7 +23,7 @@
   .row {
     width: 100%;
   }
-  
+
   .title {
     position: absolute;
     top: 0;
@@ -59,8 +59,12 @@
 
   .words {
     height: 100px;
-    overflow: auto;
     cursor: ns-resize;
+    overflow: hidden;
+  }
+
+  .words:hover {
+    overflow: scroll;
   }
 
   .words-big {
