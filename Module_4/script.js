@@ -80,6 +80,26 @@ WARNING!!! WARNING!!!
     console.log(greetings[greeting]);
   }
 
+  var hello = [];
+  var bye = [];
+
+  names.reduce(function (acc, cur) {
+    if (cur.charAt(0).toLowerCase() == "j") {
+      bye.push(byeSpeaker.speakSimple(cur));
+    } else {
+      hello.push(helloSpeaker.speakSimple(cur));
+    }
+    return acc;
+  }, {hello: [], bye: []});
+
+  for (var hi in hello) {
+    console.log(hello[hi]);
+  }
+
+  for (var gb in bye) {
+    console.log(bye[gb]);
+  }
+
 })();
 
 
