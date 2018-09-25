@@ -66,6 +66,20 @@ WARNING!!! WARNING!!!
     }
   }
 
+  var hiOrBye = function (name) {
+    if (name.charAt(0).toLowerCase() == "j") {
+      return byeSpeaker.speakSimple(name);
+    } else {
+      return helloSpeaker.speakSimple(name);
+    }
+  }
+
+  var greetings = names.map(hiOrBye);
+
+  for (var greeting in greetings) {
+    console.log(greetings[greeting]);
+  }
+
 })();
 
 
