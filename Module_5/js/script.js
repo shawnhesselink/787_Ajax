@@ -53,11 +53,35 @@ var switchMenuToActive = function () {
   classes = classes.replace(new RegExp("active", "g"), "");
   document.querySelector("#navHomeButton").className = classes;
 
+  // Remove 'active' from about button
+  var classes = document.querySelector("#navAboutButton").className;
+  classes = classes.replace(new RegExp("active", "g"), "");
+  document.querySelector("#navAboutButton").className = classes;
+
   // Add 'active' to menu button if not already there
   classes = document.querySelector("#navMenuButton").className;
   if (classes.indexOf("active") === -1) {
     classes += " active";
     document.querySelector("#navMenuButton").className = classes;
+  }
+};
+
+var switchAboutToActive = function () {
+  // Remove 'active' from home button
+  var classes = document.querySelector("#navHomeButton").className;
+  classes = classes.replace(new RegExp("active", "g"), "");
+  document.querySelector("#navHomeButton").className = classes;
+
+  // Remove 'active' from about button
+  var classes = document.querySelector("#navMenuButton").className;
+  classes = classes.replace(new RegExp("active", "g"), "");
+  document.querySelector("#navMenuButton").className = classes;
+
+  // Add 'active' to menu button if not already there
+  classes = document.querySelector("#navAboutButton").className;
+  if (classes.indexOf("active") === -1) {
+    classes += " active";
+    document.querySelector("#navAboutButton").className = classes;
   }
 };
 
@@ -170,6 +194,13 @@ function buildAndShowAbout (about) {
   } else {
     about = insertProperty(about, "five", noStar);
   }
+  // $ajaxUtils.sendGetRequest(
+  //   aboutHtml,
+  //   function () {
+      // Switch CSS class active to menu button
+      switchAboutToActive();
+    // },
+    // false);
 
   about = insertProperty(about, "number", rando);
   insertHtml("#main-content", about);
