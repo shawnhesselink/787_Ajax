@@ -147,7 +147,6 @@ function randomStar () {
 function buildAndShowAbout (about) {
   
   var rando = randomStar();
-  console.log(rando);
   var star = "fa fa-star";
   var noStar = "fa fa-star-o";
   about = insertProperty(about, "one", star);
