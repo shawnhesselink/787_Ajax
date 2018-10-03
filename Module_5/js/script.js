@@ -22,6 +22,7 @@ var menuItemsUrl =
   "https://davids-restaurant.herokuapp.com/menu_items.json?category=";
 var menuItemsTitleHtml = "snippets/menu-items-title.html";
 var menuItemHtml = "snippets/menu-item.html";
+var aboutHtml = "snippets/about-snippet.html";
 
 // Convenience function for inserting innerHTML for 'select'
 var insertHtml = function (selector, html) {
@@ -131,6 +132,49 @@ function buildAndShowHomeHTML (categories) {
     false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
 }
 
+dc.loadAbout = function () {
+  showLoading("#main-content");
+  $ajaxUtils.sendGetRequest(
+    aboutHtml,
+    buildAndShowAbout, 
+    false);
+};
+
+function randomStar () {
+  return Math.ceil(Math.random() * 5);
+}
+
+function buildAndShowAbout (about) {
+  
+  var rando = randomStar();
+  console.log(rando);
+  var star = "fa fa-star";
+  var noStar = "fa fa-star-o";
+  about = insertProperty(about, "one", star);
+  if (rando >= 2) {
+    about = insertProperty(about, "two", star);
+  } else {
+    about = insertProperty(about, "two", noStar);
+  }
+  if (rando >= 3) {
+    about = insertProperty(about, "three", star);
+  } else {
+    about = insertProperty(about, "three", noStar);
+  }
+  if (rando >= 4) {
+    about = insertProperty(about, "four", star);
+  } else {
+    about = insertProperty(about, "four", noStar);
+  }
+  if (rando == 5) {
+    about = insertProperty(about, "five", star);
+  } else {
+    about = insertProperty(about, "five", noStar);
+  }
+
+  about = insertProperty(about, "number", rando);
+  insertHtml("#main-content", about);
+}
 
 // Given array of category objects, returns a random category object.
 function chooseRandomCategory (categories) {

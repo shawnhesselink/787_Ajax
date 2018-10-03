@@ -229,6 +229,12 @@ h3.menu-item-title {
 }
 /* END SINGLE CATEGORY PAGE */
 
+/* ABOUT PAGE */
+.about {
+  text-align: center;
+  font-size: 3em;
+}
+
 
 /********** Large devices only **********/
 @media (min-width: 1200px) {
