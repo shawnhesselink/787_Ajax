@@ -5,8 +5,11 @@ angular.module('ShoppingListCheckOff', [])
 .controller('ToBuyController', ToBuyController)
 .controller('AlreadyBoughtController', AlreadyBoughtController)
 .service('ShoppingListCheckoffService', ShoppingListCheckOffService)
+.filter('money', CustomMoney);
 
 ToBuyController.$inject = ['$scope'];
+AlreadyBoughtController.$inject = ['$scope'];
+
 ToBuyController.$inject = ['ShoppingListCheckoffService'];
 function ToBuyController(ShoppingListCheckOffService) {
     var toBuy = this;
@@ -18,7 +21,7 @@ function ToBuyController(ShoppingListCheckOffService) {
     }
 }
 
-AlreadyBoughtController.$inject = ['$scope'];
+
 AlreadyBoughtController.$inject = ['ShoppingListCheckoffService'];
 function AlreadyBoughtController(ShoppingListCheckOffService) {
     var alreadyBought = this;
@@ -54,6 +57,14 @@ function ShoppingListCheckOffService () {
         var pricePerItem = toBuyItems[index].pricePerItem;
         toBuyItems.splice(index, 1);
         boughtItems.push({name: name, pricePerItem: pricePerItem, quantity: quantity});       
+    }
+
+}
+
+function CustomMoney() {
+    return function(input) {
+        var output = "$$" + input;
+        return output;
     }
 }
 
