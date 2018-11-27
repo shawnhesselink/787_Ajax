@@ -2,3 +2,8 @@ h1 {
   margin-bottom: 30px;
   text-align: center;
 }
+
+li[ui-sref]:hover {
+font-weight: bolder;
+cursor: pointer;
+}
