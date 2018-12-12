@@ -1,0 +1,14 @@
+<div class='container' ng-init="MyInfoController(userDataService)">
+    <h1 ng-if='customer.ready == false'>Not Signed Up Yet. <a ui-sref="public.sign-up">Sign up Now!</a></h1>
+    <div ng-if='customer.ready'>
+        Your info:<br><br>
+        {{ customer.info.firstname }} {{ customer.info.lastname }}<br>
+        {{ customer.info.phone }} <br>
+        {{ customer.info.email }} <br><br>
+        Your favorite menu item is: <br>
+        {{ customer.info.favorite.short_name }}. {{ customer.info.favorite.name}} <br>
+        <img class="img-responsive" width="250" height="150" ng-src="{{customer.imagePath}}" alt="{{customer.info.favorite.name}}">
+        Description: {{ customer.info.favorite.description }}
+    </div>
+
+</div>
